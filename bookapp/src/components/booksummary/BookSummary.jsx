@@ -13,6 +13,7 @@ import Counter from './Counter';
 import { addToCart, addToWishList } from '../../services/dataService';
 
 
+
 const useStyle = makeStyles({
   headerbsummary: {
     width: '100vw',
@@ -302,7 +303,7 @@ function BookSummary(props) {
   const [toggle3, setToggle3] = useState(false)
 
   
-
+  
   const addToBag = () => {
     setToggle2(true)
     let id = {
@@ -311,6 +312,7 @@ function BookSummary(props) {
     console.log(id)
     addToCart(id).then((response) => {
       console.log(response, 'added')
+      
     }).catch((errror) => { console.log(errror) })
   }
 

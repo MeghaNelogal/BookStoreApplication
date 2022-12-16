@@ -14,6 +14,8 @@ import Counter from '../booksummary/Counter';
 import { addOrder, cartItemQuantity, getcartBookList, itemsCount, removeCartListItem } from '../../services/dataService';
 import CustomerDetails from '../customerdetails/CustomerDetails';
 import { useNavigate } from 'react-router-dom';
+import {RemoveBookFromCart} from '../../services/dataService';
+import {UpdateCart} from '../../services/dataService';
 
 
 
@@ -226,13 +228,6 @@ const useStyle = makeStyles({
 
 function MyCart(props) {
     const classes = useStyle()
-
-    const navigate = useNavigate()
-
-    const openDashBoard = () => {
-        navigate('/dashboard')
-     }
-
     const [count, setCount] = useState(1)
     const [cartList, setCartList] = useState([])
     const [details, setDetails] = useState(false)
@@ -240,6 +235,13 @@ function MyCart(props) {
     const [order, setOrder] = useState(false)
     const [quantity, setQuantity] = useState([])
     const [orderList, setOrderList] = useState([])
+  
+
+    const navigate = useNavigate()
+
+    const openDashBoard = () => {
+        navigate('/dashboard')
+     }
 
     const openCustomerDetails = () => {
         setDetails(true)
@@ -250,36 +252,46 @@ function MyCart(props) {
         setOrder(true)
     }
     
-    const decrementValue = (id, quan) => {
-        if (count > 1) {
-            setCount(count => count - 1)
-            let inputObj = {
-                cartItem_id: id,
-                quantityToBuy: quan - 1
-            }
-            console.log(inputObj, 'value of quantity')
-            cartItemQuantity(inputObj).then((response) => {
-                console.log(response, 'decrement value');
-
-            }).catch((error) => console.log(error))
-        } else {
-            setCount(1)
+   
+    const MinusQuantity = (id, quantity) =>{
+        let input = {
+            quantityToBuy: quantity-1,
         }
-        console.log(quantity, 'quantity value of product dec....')
+        if (quantity > 1){
+            setCount(quantity-1);
+        } else {
+                setCount(1);
+        }
+        UpdateCart(id, input).then((response) =>{
+            console.log(response);
+            
+        }).catch((error) =>{
+            console.log(error);
+        })
+        console.log(input,"Input")
     }
 
-    const incrementValue = (id, quan) => {
-        console.log(id, 'from mycart inc...')
-        setCount(count => count + 1)
-        let inputObj = {
-            cartItem_id: id,
-            quantityToBuy: quan + 1
+    const PlusQuantity = (id, quantity) =>{
+        
+        let input = {
+            quantityToBuy: quantity+1,
         }
-        console.log(inputObj, 'value of quantity')
-        cartItemQuantity(inputObj).then((response) => {
-            console.log(response, 'increment value');
+        setCount(quantity+1);
+        UpdateCart(id,input).then((response) =>{
+            console.log(response);
+            
+        }).catch((error) =>{
+            console.log(error);
+        })
+        console.log(input,"Input")
+    }
 
-        }).catch((error) => console.log(error))
+    const removeBook = (id) =>{
+        RemoveBookFromCart(id).then((response) =>{
+            console.log(response);
+        }).catch((error) =>{
+            console.log(error);
+        })
     }
 
     const getcartList = () => {
@@ -293,30 +305,11 @@ function MyCart(props) {
         }).catch((error) => console.log(error))
     }
 
-
-    // const getcartList = () => {
-    //     console.log('cart BookList')
-    //     getcartBookList().then((response) => {
-    //         console.log(response)
-    //         setCartList(response.data.result)
-    //     }).catch((error) => console.log(error))
-    // }
-
     useEffect(() => {
         getcartList()
     }, [])
 
-    const removeproduct = (id) => {
-        let cartlistObj = { id: id }
-        removeCartListItem(cartlistObj)
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        console.log(cartlistObj, "deleted succesfully")
-    }
+   
 
     const orderPlacedSuccess = () => {
         console.log(cartList, 'list of ordered books')
@@ -386,20 +379,20 @@ function MyCart(props) {
                                                 {/* <Counter /> */}
                                                 <Box sx={{ display: 'flex', alignItems: 'center', width: '45%', justifyContent: 'space-between', border: '0px solid orange' }}>
                                                     <Box >
-                                                        <IconButton onClick={() => decrementValue(note._id, note.quantityToBuy)} size='small' sx={{ border: '1px solid #DBDBDB' }}>
+                                                        <IconButton onClick={()=>MinusQuantity(note._id,note.quantityToBuy)} size='small' sx={{ border: '1px solid #DBDBDB' }}>
                                                             <RemoveIcon fontSize='small' sx={{ color: '#DBDBDB' }} /></IconButton>
                                                     </Box>
                                                     <Box sx={{ width: '40%', height: '95%', border: '1px solid #DBDBDB' }} >
-                                                        <span style={{ fontSize: '22px' }} >{count}</span>
+                                                        <span style={{ fontSize: '22px' }} >{note.quantityToBuy}</span>
                                                     </Box>
                                                     <Box>
-                                                        <IconButton onClick={() => incrementValue(note._id, note.quantityToBuy)} size='small' sx={{ border: '1px solid #DBDBDB' }}>
+                                                        <IconButton onClick={() =>PlusQuantity(note._id, note.quantityToBuy)} size='small' sx={{ border: '1px solid #DBDBDB' }}>
                                                             <AddIcon fontSize='small' sx={{ color: '#333232' }} /></IconButton>
                                                     </Box>
                                                 </Box>
                                                 <Box sx={{ width: '30%' }}>
                                                     <Box
-                                                        onClick={() => removeproduct(note._id)}
+                                                       onClick={() => removeBook(note._id)}
                                                         style={{ fontSize: '14px', color: '#0A0102', fontWeight: '500', position: 'relative', left: '10px' }} >Remove</Box>
                                                 </Box>
                                             </Box>
