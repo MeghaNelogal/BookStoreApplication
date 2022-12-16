@@ -197,18 +197,7 @@ export default function Header() {
               <Box sx={{ fontSize: '10px' }}>Cart</Box>
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
+         
           <Box sx={{ width: '5%' }} />
         </Toolbar>
       </AppBar>

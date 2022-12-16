@@ -83,8 +83,7 @@ const useStyle = makeStyles({
 
 function OrderSummary(props) {
     const classes = useStyle()
-
-    
+  
   return (
     <div>
         <Card className={classes.containerod} variant='outlined'>
@@ -95,7 +94,7 @@ function OrderSummary(props) {
             <Box className={classes.detailsod}>
                <Box className={classes.bookimageod}>
                   <img width='100%' height='100%' src={muiimg} />
-                  <img src={muiimg} />
+                 
                </Box>
                <Box className={classes.textod}>
                   <Box sx={{ height: '30%', fontSize: '17px', color: '#0A0102', fontWeight: '500' }}>

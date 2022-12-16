@@ -13,7 +13,6 @@ import { useState } from 'react';
 import Counter from '../booksummary/Counter';
 import { addOrder, cartItemQuantity, getcartBookList, itemsCount, removeCartListItem } from '../../services/dataService';
 import CustomerDetails from '../customerdetails/CustomerDetails';
-import OrderSummary from '../ordersummary/OrderSummary';
 import { useNavigate } from 'react-router-dom';
 
 

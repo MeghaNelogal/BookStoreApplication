@@ -8,19 +8,23 @@ import { makeStyles } from '@mui/styles';
 
 const useStyle = makeStyles({
     box: {
-        height:'22px',
-        width:'38px',
-        display:'flex',
+        height: '22px',
+        width: '38px',
+        display: 'flex',
         border: '1px solid gray',
-        alignItems:'center',
-        justifyContent:'center',
-        position:'relative',
-        right:'20px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        right: '20px',
     },
     decre: {
-        position:'relative',
-        right:'40px',
-    }
+        position: 'relative',
+        left: '0px',
+    },
+    incr: {
+        position: 'relative',
+        right: '40px',
+    },
 })
 
 const initialState = 1
@@ -37,16 +41,17 @@ const reducer = (state, action) => {
 
 function Counter() {
     const classes = useStyle()
-    const [count,dispatch]=useReducer(reducer,initialState)
+    const [count, dispatch] = useReducer(reducer, initialState)
+    
     useReducer(reducer, initialState)
     return (
         <div>
-            <div style={{display:"flex",flexDirection:'row', color:'black',alignItems:'center'}}>
-            <Button onClick={() => dispatch('increment')}><AddCircleOutlineIcon color="action"/></Button>
-            <div className={classes.box}> {count}</div>
-            <Button className={classes.decre} onClick={() => dispatch('decrement')}><RemoveCircleOutlineIcon color="action"/></Button>
+            <div style={{ display: "flex", flexDirection: 'row', color: 'black', alignItems: 'center' }}>
+                <Button className={classes.decre} onClick={() => dispatch('decrement')}><RemoveCircleOutlineIcon color="action" /></Button>
+                <div className={classes.box}> {count}</div>
+                <Button className={classes.incr} onClick={() => dispatch('increment')}><AddCircleOutlineIcon color="action" /></Button>
             </div>
-            
+
         </div>
     )
 }

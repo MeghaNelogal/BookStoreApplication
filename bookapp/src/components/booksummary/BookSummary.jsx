@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { makeStyles } from '@mui/styles'
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
@@ -301,20 +301,28 @@ function BookSummary(props) {
   const [toggle2, setToggle2] = useState(false)
   const [toggle3, setToggle3] = useState(false)
 
+  
+
   const addToBag = () => {
     setToggle2(true)
-    console.log(props.id)
-    addToCart(props.id).then((response) => {
+    let id = {
+      product_id: props.id
+  }
+    console.log(id)
+    addToCart(id).then((response) => {
       console.log(response, 'added')
-    }).catch((error) => { console.log(error) })
+    }).catch((errror) => { console.log(errror) })
   }
 
   const addWishList = () => {
     setToggle3(true)
-    console.log(props.id)
-    addToWishList(props.id).then((response) => {
+    let id = {
+      product_id: props.id
+  }
+    console.log(id)
+    addToWishList(id).then((response) => {
       console.log(response)
-    }).catch((error) => { console.log(error) })
+    }).catch((errror) => { console.log(errror) })
   }
 
   const openBook = () => {
@@ -381,15 +389,7 @@ function BookSummary(props) {
                     <span style={{ color: '#878787', display: 'flex', alignItems: 'center' }}> <Box style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#878787' }}></Box>&nbsp;Book Detail</span>
                     <Box className={classes.paratext} sx={{ marginLeft: '9px', fontSize: '12px', opacity: '0.8' }}>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                      aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                      takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                      et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                      consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                      At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                      sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                      magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                      sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
                       sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
                       est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
