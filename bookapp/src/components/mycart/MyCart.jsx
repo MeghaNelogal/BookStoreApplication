@@ -236,6 +236,7 @@ function MyCart(props) {
     const [quantity, setQuantity] = useState([])
     const [orderList, setOrderList] = useState([])
   
+   
 
     const navigate = useNavigate()
 
@@ -246,10 +247,12 @@ function MyCart(props) {
     const openCustomerDetails = () => {
         setDetails(true)
         setToggle4(true)
+        
     }
 
     const openBookDetails = () => {
         setOrder(true)
+        
     }
     
    
@@ -280,6 +283,7 @@ function MyCart(props) {
         UpdateCart(id,input).then((response) =>{
             console.log(response);
             
+            
         }).catch((error) =>{
             console.log(error);
         })
@@ -300,13 +304,15 @@ function MyCart(props) {
         getcartBookList().then((response) => {
             console.log(response)
             setCartList(response.data.result)
-            setQuantity(response.data.result)
             setOrderList(response.data.result)
+            setCartList(response.data.result)
+            
         }).catch((error) => console.log(error))
     }
-
+ 
     useEffect(() => {
         getcartList()
+        console.log(cartList)
     }, [])
 
    
@@ -359,7 +365,7 @@ function MyCart(props) {
                                 cartList.map((note) => (
                                     <Box className={classes.textcart}>
                                         <Box className={classes.bookimagecart}>
-                                            <img width='100%' height='100%' src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671038071_da39a3ee_46d35ed84c3d03e50096918a347b6330bb925847&api_key=CometServer1' />
+                                            <img width='100%' height='100%' src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671469924_da39a3ee_1e244db0be423f4830d0b15ae0dbd6d028202462&api_key=CometServer1' />
                                         </Box>
                                         <Box className={classes.contentcart}>
                                             <Box sx={{ height: '22%', fontSize: '17px', color: '#0A0102', fontWeight: '500' }}>
@@ -371,8 +377,12 @@ function MyCart(props) {
                                                 {note.product_id.author}
                                             </Box>
                                             <Box className={classes.pricecart}>
-                                                <Box className={classes.discountcart}>Rs. {note.product_id.discountPrice} </Box>
-                                                <Box className={classes.costcart}>Rs. {note.product_id.price}</Box>
+                                                <Box className={classes.discountcart}>Rs.
+                                                 {note.product_id.discountPrice} 
+                                                 </Box>
+                                                <Box className={classes.costcart}>Rs.
+                                                 {note.product_id.price}
+                                                 </Box>
                                             </Box>
                                             <Box sx={{ height: '15%' }}></Box>
                                             <Box className={classes.countercart}>
@@ -383,7 +393,9 @@ function MyCart(props) {
                                                             <RemoveIcon fontSize='small' sx={{ color: '#DBDBDB' }} /></IconButton>
                                                     </Box>
                                                     <Box sx={{ width: '40%', height: '95%', border: '1px solid #DBDBDB' }} >
-                                                        <span style={{ fontSize: '22px' }} >{note.quantityToBuy}</span>
+                                                        <span style={{ fontSize: '22px' }} >
+                                                            {note.quantityToBuy}
+                                                            </span>
                                                     </Box>
                                                     <Box>
                                                         <IconButton onClick={() =>PlusQuantity(note._id, note.quantityToBuy)} size='small' sx={{ border: '1px solid #DBDBDB' }}>

@@ -93,13 +93,14 @@ function OrderSummary(props) {
             </Box>
             <Box className={classes.detailsod}>
                <Box className={classes.bookimageod}>
-                  <img width='100%' height='100%' src={muiimg} />
+                  <img width='100%' height='100%' src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671469924_da39a3ee_1e244db0be423f4830d0b15ae0dbd6d028202462&api_key=CometServer1' />
                  
                </Box>
                <Box className={classes.textod}>
                   <Box sx={{ height: '30%', fontSize: '17px', color: '#0A0102', fontWeight: '500' }}>
-                     {/* Don't Make Me Think */}
-                     {props.item.product_id.bookName}</Box>
+                     Don't Make Me Think
+                     {props.item.product_id.bookName}
+                     </Box>
                   <Box sx={{ height: '24%', fontSize: '13px', color: '#9D9D9D', fontWeight: '500' }}>{props.item.product_id.author}</Box>
                   <Box className={classes.odprice}>
                      <Box className={classes.oddiscount}>Rs. 15000</Box><Box className={classes.odcost}>Rs. {props.item.product_id.price}</Box></Box>
@@ -118,3 +119,4 @@ function OrderSummary(props) {
 }
 
 export default OrderSummary
+

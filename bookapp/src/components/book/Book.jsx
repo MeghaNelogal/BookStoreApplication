@@ -108,7 +108,7 @@ function Book(props) {
         <div>
             <Paper elevation={1} className={classes.main2}>
                 <Box className={classes.bookimage}>
-                    <Box className={classes.bookimage2}><img className={classes.bookimg} src="https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A138faf88-74b8-4931-8d8a-2413a3fcc2b9&params=version%3A0&token=1670994811_da39a3ee_74cf94225fa03e483de9cbd273605d5c2ebe56ef&api_key=CometServer1" /></Box>
+                    <Box className={classes.bookimage2}><img className={classes.bookimg} src="https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1" /></Box>
                 </Box>
                 <Box className={classes.bookdetail}>
                     <Box className={classes.booktext}>

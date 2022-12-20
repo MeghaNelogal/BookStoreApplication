@@ -75,6 +75,7 @@ const useStyles = makeStyles({
         position: 'relative',
         left: '180px',
     },
+    
 })
 
 function Dashboard(props) {
@@ -102,23 +103,44 @@ function Dashboard(props) {
         setToggle1(false)
     }
 
+    // useEffect(() => {
+    //     getBookList().then((response) => {
+    //         console.log(response)
+    //         setBookList(response.data.result)
+    //     }).catch((error) => {
+    //         console.log(error)
+    //     })
+    // }, [])
+
     useEffect(() => {
         getBookList().then((response) => {
-            console.log(response)
-            setBookList(response.data.result)
+            console.log(response);
+            if(search){
+                let filterBook=response.data.books.filter(books=>books.bookName.toLowerCase().includes(search.toLocaleLowerCase())) 
+                setBookList(filterBook)
+            }
+            else{
+                setBookList(response.data.result)
+            }
+           
         }).catch((error) => {
             console.log(error)
         })
-    }, [])
+    }, [search])
 
     const autoRefresh = () => {
         getBookList()
     }
 
+    const searchBook = (value) => {
+        setSearch(value)
+    }
+
     return (
         <div>
             <Box>
-                <Header onChange={event => { setSearch(event.target.value) }} />
+                {/* <Header onChange={event => { setSearch(event.target.value) }} /> */}
+                < Header search={searchBook} />
             </Box>
             <Box className={classes.container2}>
                 <Box className={classes.header2}>
@@ -134,8 +156,7 @@ function Dashboard(props) {
                     {toggle1 ? <BookSummary openBookBack={openBookBack} id={input._id} bookName={input.bookName} author={input.author} quantity={input.quantity} discountPrice={input.discountPrice} price={input.price} description={input.description}
                         index={bookList.indexOf(input)} />
                         :
-                        //   bookList.map((book) => (<Box onClick={()=>openBookSummary(book)} ><Book key={book._id} book={book} />
-                        //   </Box>))
+                       
                         page === 1 ?
                             bookList.filter((book) => {
                                 if (search == "") {

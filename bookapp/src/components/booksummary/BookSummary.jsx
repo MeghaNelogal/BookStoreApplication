@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { makeStyles } from '@mui/styles'
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating';
 import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
 import Counter from './Counter';
-import { addToCart, addToWishList } from '../../services/dataService';
+import { addToCart, addToWishList, getcartBookList } from '../../services/dataService';
 
 
 
@@ -302,17 +302,18 @@ function BookSummary(props) {
   const [toggle2, setToggle2] = useState(false)
   const [toggle3, setToggle3] = useState(false)
 
-  
-  
+
+
   const addToBag = () => {
     setToggle2(true)
     let id = {
       product_id: props.id
-  }
+    }
     console.log(id)
     addToCart(id).then((response) => {
       console.log(response, 'added')
-      
+
+
     }).catch((errror) => { console.log(errror) })
   }
 
@@ -320,7 +321,7 @@ function BookSummary(props) {
     setToggle3(true)
     let id = {
       product_id: props.id
-  }
+    }
     console.log(id)
     addToWishList(id).then((response) => {
       console.log(response)
@@ -330,12 +331,29 @@ function BookSummary(props) {
   const openBook = () => {
     props.openBookBack()
     setToggle2(true)
+
   }
+
+  
+  // React.useEffect(() => {
+  //   getcartBookList().then((res) => {
+  //     console.log('abc', res)
+  //     res.data.result.filter((item) => {
+  //       if (item._id == props.id) {
+  //         console.log('xyz')
+  //         setToggle2(res.data.result)
+  //         return item
+  //       }
+  //     })
+  //     // console.log(res.data.result)
+  //     setToggle2(res.data.result)
+  //   })
+  // }, [])
 
   return (
     <div>
       <Box>
-       
+
         <Box className={classes.headerbsummary}>
           <Box className={classes.homebook} >
             <Box className={classes.homebsummary} onClick={openBook}>Home /</Box>
@@ -344,13 +362,13 @@ function BookSummary(props) {
         </Box>
         <Box className={classes.container3}>
           <Box className={classes.bookimages}>
-            <Box className={classes.bookimage1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3Adbd4f4a0-20d3-48b1-ae13-926e5ed7f1fb&params=version%3A0&token=1671038071_da39a3ee_46d35ed84c3d03e50096918a347b6330bb925847&api_key=CometServer1' width='90%' height='90%' /></Box>
-            <Box className={classes.bookimage2}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A4fc51ce4-3683-4dfc-9169-77b43581553d&params=version%3A0&token=1671038071_da39a3ee_46d35ed84c3d03e50096918a347b6330bb925847&api_key=CometServer1' width='100%' height='100%' /></Box>
+            <Box className={classes.bookimage1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A4fc51ce4-3683-4dfc-9169-77b43581553d&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='90%' height='90%' /></Box>
+            <Box className={classes.bookimage2}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3Aad580fd0-abd0-4107-a45d-6be6d2fa445b&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='100%' height='100%' /></Box>
           </Box>
           <Box sx={{ width: '0.2%' }}></Box>
           <Box className={classes.container4}>
             <Box className={classes.bookimgbtn}>
-              <Box className={classes.bookimg1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671038071_da39a3ee_46d35ed84c3d03e50096918a347b6330bb925847&api_key=CometServer1' width='85%' height='85%' /></Box>
+              <Box className={classes.bookimg1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='85%' height='85%' /></Box>
               <Box className={classes.bookbtn}>
                 <Box className={classes.bookbtns}>
                   {
@@ -359,9 +377,9 @@ function BookSummary(props) {
                       <Button onClick={addToBag} variant="contained" className={classes.addbag}>Add to Bag</Button>
                   }
                   {
-                    toggle3 ?  <Button variant="contained" className={classes.addfav} startIcon={<FavoriteIcon sx={{ color: 'red' }} />}></Button>
-                    :
-                    <Button onClick={addWishList} variant="contained" className={classes.addfav} startIcon={<FavoriteIcon />}>Wishlist</Button>
+                    toggle3 ? <Button variant="contained" className={classes.addfav} startIcon={<FavoriteIcon sx={{ color: 'red' }} />}></Button>
+                      :
+                      <Button onClick={addWishList} variant="contained" className={classes.addfav} startIcon={<FavoriteIcon />}>Wishlist</Button>
                   }
                 </Box>
               </Box>
@@ -391,7 +409,7 @@ function BookSummary(props) {
                     <span style={{ color: '#878787', display: 'flex', alignItems: 'center' }}> <Box style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#878787' }}></Box>&nbsp;Book Detail</span>
                     <Box className={classes.paratext} sx={{ marginLeft: '9px', fontSize: '12px', opacity: '0.8' }}>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
                       sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
                       est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores

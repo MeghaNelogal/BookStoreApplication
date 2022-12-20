@@ -16,45 +16,12 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useNavigate } from 'react-router-dom';
 import MyCart from '../mycart/MyCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+// import Header from '../header/Header.css'
+import headercs from '../header/headercs.css'
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: '#FCFCFC',
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '35vw',
-    },
-  },
-}));
-
-export default function Header() {
+export default function Header(props) {
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -78,6 +45,10 @@ export default function Header() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const searching = (event) => {
+    props.search(event.target.value)
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -156,7 +127,7 @@ export default function Header() {
             color="inherit"
             aria-label="open drawer"
           >
-            <img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3Ac9699660-eac7-4fb4-ac4b-ed01eeec3242&params=version%3A0&token=1671038071_da39a3ee_46d35ed84c3d03e50096918a347b6330bb925847&api_key=CometServer1' />
+            <img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A6a559a8a-8ca5-4bf2-9f76-bb2d51e33b9f&params=version%3A0&token=1671469924_da39a3ee_1e244db0be423f4830d0b15ae0dbd6d028202462&api_key=CometServer1' />
           </IconButton>
           <Typography
             variant="h6"
@@ -166,8 +137,8 @@ export default function Header() {
           >
             Bookstore
           </Typography>
-          <Box sx={{ width: '2%' }} />
-          <Search>
+          <Box sx={{ width: '30%' }} />
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon color='action' />
             </SearchIconWrapper>
@@ -175,7 +146,17 @@ export default function Header() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
+          <div className="search" sx={{ height: '100%', width: '100%' }} >
+            {/* <div className="searchIcon"  ><SearchOutlinedIcon sx={{width:'6%',height:'80%',border:'1px solid blue'}} /></div> */}
+            <Box sx={{ width: '200%', border: '0px solid red', position: 'relative', right: '300px', bottom: '0px' }}>
+              {/* <Box sx={{border:'2px solid blue',height:'60%'}} > */}
+
+                <input placeholder='Search...' type="text" className='inputSearch' onChange={searching}  sx={{width:'120%',heigh:'100%',border:'2px solid blue'}}/>
+              </Box>
+          
+
+          </div>
           <Box sx={{ width: '8%' }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="medium" color="inherit" sx={{ flexDirection: 'column', width: '6.5vw', borderLeft: '1px solid #89292f', borderRadius: '0%' }}>
@@ -197,7 +178,7 @@ export default function Header() {
               <Box sx={{ fontSize: '10px' }}>Cart</Box>
             </IconButton>
           </Box>
-         
+
           <Box sx={{ width: '5%' }} />
         </Toolbar>
       </AppBar>
