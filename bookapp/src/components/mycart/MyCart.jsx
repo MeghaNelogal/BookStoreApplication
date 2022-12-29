@@ -365,7 +365,7 @@ function MyCart(props) {
                                 cartList.map((note) => (
                                     <Box className={classes.textcart}>
                                         <Box className={classes.bookimagecart}>
-                                            <img width='100%' height='100%' src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671469924_da39a3ee_1e244db0be423f4830d0b15ae0dbd6d028202462&api_key=CometServer1' />
+                                            <img width='100%' height='100%' src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A138faf88-74b8-4931-8d8a-2413a3fcc2b9&params=version%3A0&token=1671946898_da39a3ee_546fb6c203205a7d0d901516ce5b55ea771ed53a&api_key=CometServer1' />
                                         </Box>
                                         <Box className={classes.contentcart}>
                                             <Box sx={{ height: '22%', fontSize: '17px', color: '#0A0102', fontWeight: '500' }}>

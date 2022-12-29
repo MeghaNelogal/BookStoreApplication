@@ -335,20 +335,20 @@ function BookSummary(props) {
   }
 
   
-  // React.useEffect(() => {
-  //   getcartBookList().then((res) => {
-  //     console.log('abc', res)
-  //     res.data.result.filter((item) => {
-  //       if (item._id == props.id) {
-  //         console.log('xyz')
-  //         setToggle2(res.data.result)
-  //         return item
-  //       }
-  //     })
-  //     // console.log(res.data.result)
-  //     setToggle2(res.data.result)
-  //   })
-  // }, [])
+  React.useEffect(() => {
+    getcartBookList().then((res) => {
+      console.log('abc', res)
+      res.data.result.filter((item) => {
+        if (item._id == props.id) {
+          console.log('xyz')
+          setToggle2(res.data.result)
+          return item
+        }
+      })
+      // console.log(res.data.result)
+      setToggle2(res.data.result)
+    })
+  }, [])
 
   return (
     <div>
@@ -362,13 +362,13 @@ function BookSummary(props) {
         </Box>
         <Box className={classes.container3}>
           <Box className={classes.bookimages}>
-            <Box className={classes.bookimage1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A4fc51ce4-3683-4dfc-9169-77b43581553d&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='90%' height='90%' /></Box>
-            <Box className={classes.bookimage2}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3Aad580fd0-abd0-4107-a45d-6be6d2fa445b&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='100%' height='100%' /></Box>
+            <Box className={classes.bookimage1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A2fc5cbdd-6739-4109-8fe3-577ff0ceef47&params=version%3A0&token=1671946898_da39a3ee_546fb6c203205a7d0d901516ce5b55ea771ed53a&api_key=CometServer1' width='90%' height='90%' /></Box>
+            <Box className={classes.bookimage2}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A01f3cce1-3813-4cb5-8d35-08ea74aa3f52&params=version%3A0&token=1671946898_da39a3ee_546fb6c203205a7d0d901516ce5b55ea771ed53a&api_key=CometServer1' width='100%' height='100%' /></Box>
           </Box>
           <Box sx={{ width: '0.2%' }}></Box>
           <Box className={classes.container4}>
             <Box className={classes.bookimgbtn}>
-              <Box className={classes.bookimg1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A115f0025-d8bf-436a-a7c3-030a8a1de757&params=version%3A0&token=1671426673_da39a3ee_db2956fc0e0b9fac9d0653037b5d91db06c85f78&api_key=CometServer1' width='85%' height='85%' /></Box>
+              <Box className={classes.bookimg1}><img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A138faf88-74b8-4931-8d8a-2413a3fcc2b9&params=version%3A0&token=1671946898_da39a3ee_546fb6c203205a7d0d901516ce5b55ea771ed53a&api_key=CometServer1' /></Box>
               <Box className={classes.bookbtn}>
                 <Box className={classes.bookbtns}>
                   {

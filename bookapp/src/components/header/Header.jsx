@@ -19,9 +19,19 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 // import Header from '../header/Header.css'
 import headercs from '../header/headercs.css'
+import { makeStyles } from '@mui/styles'
 
+
+const useStyles = makeStyles({
+  ['@media only screen and (min-width: 320px) and (max-width: 480px)']: {
+    inputSearch:{
+      width: '88%',
+  }
+  },
+})
 
 export default function Header(props) {
+  const classes = useStyles()
   const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -127,7 +137,7 @@ export default function Header(props) {
             color="inherit"
             aria-label="open drawer"
           >
-            <img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A6a559a8a-8ca5-4bf2-9f76-bb2d51e33b9f&params=version%3A0&token=1671469924_da39a3ee_1e244db0be423f4830d0b15ae0dbd6d028202462&api_key=CometServer1' />
+            <img src='https://public-v2links.adobecc.com/d096df37-ca37-4026-553f-8cfa6bec09ec/component?params=component_id%3A6a559a8a-8ca5-4bf2-9f76-bb2d51e33b9f&params=version%3A0&token=1671946898_da39a3ee_546fb6c203205a7d0d901516ce5b55ea771ed53a&api_key=CometServer1' />
           </IconButton>
           <Typography
             variant="h6"
